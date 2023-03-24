@@ -10,7 +10,7 @@ import Upload from "../UploadFiles/Upload";
 // import Upload, { UploadForm } from "../UploadFiles/Upload";
 
 function User() {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(3);
 
   const displayData = () => {
     switch (active) {
