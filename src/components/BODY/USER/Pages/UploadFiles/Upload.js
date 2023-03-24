@@ -8,8 +8,8 @@ import {
 } from "../../../../../utils/Icons";
 import httpClient from "../../../../../httpClient";
 
-export default function Upload() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Upload({isOpen, setIsOpen}) {
+  // const [isOpen, setIsOpen] = useState(false);
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
@@ -38,7 +38,7 @@ export default function Upload() {
   );
 }
 
-const FileUpload = ({ files, setFiles, removeFile,handleClose }) => {
+const FileUpload = ({ files, setFiles, removeFile, handleClose }) => {
   const uploadHandler = async (event) => {
     const file = event.target.files[0];
     if (!file) return;

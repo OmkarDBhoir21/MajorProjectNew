@@ -7,12 +7,13 @@ import Signup from "./components/BODY/REGISTER/Register";
 import Recurter from "./components/BODY/RECRUTER/Recruter";
 import Body from "./components/cvgenerator/Body/Body";
 import Upload from "./components/BODY/USER/Pages/UploadFiles/Upload";
+import LandingPage from "./components/BODY/LandingPage/LandingPage";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<User />} />
+        <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Signup />}/>
         <Route exact path="/user" element={<User />}/>

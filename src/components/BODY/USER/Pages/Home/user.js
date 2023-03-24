@@ -6,6 +6,7 @@ import AvilableJobs from "../Available Jobs/AvailableJobs";
 import History from "../History/History";
 import styles from "./user.module.css";
 import PDFViewer from "../PDFViewer/PDFViewer";
+import Upload from "../UploadFiles/Upload";
 // import Upload, { UploadForm } from "../UploadFiles/Upload";
 
 function User() {
@@ -71,7 +72,7 @@ function UserPage() {
       <PDFViewer />
 
       {/* Upload Window       */}
-      {/* {isOpen && <UploadForm handleClose={togglePopup}/>} */}
+      {isOpen && <Upload isOpen={isOpen} setIsOpen={setIsOpen}/>}
     </div>
   );
 }

@@ -105,7 +105,7 @@ body {
   border-bottom: 4px solid white !important;
 }
 
-.logoutBtn{
+.logBtn{
   display: flex;
   align-items: center;
   color: black;
@@ -118,7 +118,7 @@ body {
   background: #fff;
 }
 
-.logoutBtn button{
+.logBtn button{
   width: 150px;
   height: 40px;
   border-radius: 4px;
@@ -132,8 +132,19 @@ body {
   text-decoration: none;
 }
 
-.logoutBtn button:hover {
+.logBtn button:hover {
   transition: all 0.2s ease-in-out;
   background: #894242;
   color: white;
+}
+
+.landingPageBtn{
+  display: flex;
+  flex-direction: row;
+  flex: 0.5;
+  height: inherit;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+  margin-left: 40%;
 }

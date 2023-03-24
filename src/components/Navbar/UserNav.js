@@ -2,11 +2,23 @@ import styles from "./Navbar.module.css";
 import { userNav } from "../../utils/navItems";
 import { useNavigate } from "react-router-dom";
 import img from "./60111.jpg";
+import httpClient from "../../httpClient";
 
 export default function Navbar({ active, setActive }) {
   const navigate = useNavigate();
   function navigatePage(e) {
     navigate(e);
+  }
+
+  const logout = async () => {
+    try{
+      await httpClient.post("//localhost:5000/logout")
+      window.location.href = "/";
+    }
+    catch(error){
+      console.error(error);
+
+    }
   }
 
   return (
@@ -36,8 +48,8 @@ export default function Navbar({ active, setActive }) {
           </div>
         </button>
       </div>
-      <div className={styles.logoutBtn}>
-        <button onClick={() => navigatePage("/login")}>
+      <div className={styles.logBtn}>
+        <button onClick={() => logout()}>
           Logout
         </button>
       </div>
