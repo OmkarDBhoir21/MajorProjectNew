@@ -49,7 +49,7 @@ function SignupPage() {
       <div className={styles.center}>
         <div className={styles.center1}>
           <div className={styles.cardHeader}>
-          <div className={styles.title}>
+            <div className={styles.title}>
               <h1>Signup</h1>
             </div>
             <div className={styles.radioContainer}>
@@ -58,6 +58,7 @@ function SignupPage() {
                   type="radio"
                   name="candidate"
                   value="candidate"
+                  id="candidate"
                   checked={userType === "candidate"}
                   onChange={handleCheck}
                 />
@@ -76,67 +77,14 @@ function SignupPage() {
               </div>
             </div>
           </div>
-          <form>
-            <div className={styles.inputField}>
-              <input
-                type="text"
-                placeholder="First name"
-                required
-                onChange={(e) => {
-                  setFirstName(e.target.value);
-                }}
-              />
-            </div>
-            <div className={styles.inputField}>
-              <input
-                type="text"
-                placeholder="Last name"
-                required
-                onChange={(e) => {
-                  setLastName(e.target.value);
-                }}
-              />
-            </div>
-            <div className={styles.inputField}>
-              <input
-                type="text"
-                placeholder="Email"
-                required
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-            </div>
-            <div className={styles.inputField}>
-              <input
-                type="number"
-                placeholder="Enter mobile no."
-                required
-                onChange={(e) => {
-                  setPhoneNum(e.target.value);
-                }}
-              />
-            </div>
-            <div className={styles.inputField}>
-              <input
-                type="password"
-                placeholder="Enter Password"
-                required
-                onChange={(e) => {
-                  setPass(e.target.value);
-                }}
-              />
-            </div>
-            <div className={styles.inputField}>
-              <button type="button" onClick={() => signUpUser()}>
-                Signup
-              </button>
-            </div>
-            <div className={styles.loginLink}>
-              <label>Already have an account?</label>
-              <a href="/login"> Login</a>
-            </div>
-          </form>
+          <UserForm
+            setFirstName={setFirstName}
+            setLastName={setLastName}
+            setEmail={setEmail}
+            setPhoneNum={setPhoneNum}
+            setPass={setPass}
+            signUpUser={signUpUser}
+          />
         </div>
         <div className={styles.center2}>
           <div className={styles.loginTitle}></div>
@@ -146,7 +94,7 @@ function SignupPage() {
   );
 }
 
-function User(
+function UserForm(
   setFirstName,
   setLastName,
   setEmail,
@@ -158,8 +106,15 @@ function User(
     <div>
       <div>
         <form>
-          <div className={styles.title}>
-            <h1>Signup</h1>
+          <div className={styles.inputField}>
+            <input
+              type="text"
+              placeholder="First name"
+              required
+              onChange={(e) => {
+                setFirstName(e.target.value);
+              }}
+            />
           </div>
           <div className={styles.inputField}>
             <input
@@ -215,5 +170,7 @@ function User(
     </div>
   );
 }
+
+
 
 export default Signup;

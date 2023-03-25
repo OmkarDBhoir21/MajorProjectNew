@@ -24,19 +24,22 @@
     vertical-align: top;
     background: white;
     border-color: black;
-    justify-content: center;
     align-items: center;
 }
 
-/* .cardHeader{
+.cardHeader{
+    margin-top: 20px;
+    /* border: 1px solid; */
     display: flex;
     flex-direction: column;
-    flex: 0.9;
-} */
+    flex: 0.8;
+    justify-content:space-between;
+    margin-bottom: 30px;
+}
 
 .title{
     text-align: center;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
     color: #575757;
 }
 
