@@ -1,5 +1,3 @@
-
-
 export const userNav = [
     {
         id: 1,
@@ -20,5 +18,23 @@ export const userNav = [
         id: 4,
         title: "History",
         link: "/history",
+    },
+]
+
+export const recruiterNav = [
+    {
+        id: 1,
+        title: "Home", 
+        link: "/recruter",
+    },
+    {
+        id: 2,
+        title: "History",
+        link: "/history",
+    },
+    {
+        id: 3,
+        title: "Applied Candidates",
+        link: "/appliedcandidates"
     },
 ]

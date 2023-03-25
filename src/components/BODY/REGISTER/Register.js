@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./register.module.css";
 import Navbar from "../../Navbar/NavbarT2";
-import { UserRegisterForm } from "./Forms";
+import { RecruiterRegisterForm, UserRegisterForm } from "./Forms";
 
 function Signup() {
   return (
@@ -17,6 +17,15 @@ function SignupPage() {
 
   const handleCheck = (e) => {
     setUserType(e.target.value);
+  };
+
+  const handlePage = () => {
+    if (userType === "candidate") {
+      return <UserRegisterForm />;
+    }
+    if (userType === "recruiter") {
+      return <RecruiterRegisterForm />;
+    }
   };
   return (
     <div>
@@ -51,7 +60,7 @@ function SignupPage() {
               </div>
             </div>
           </div>
-          <UserRegisterForm />
+          {handlePage()}
         </div>
         <div className={styles.center2}>
           <div className={styles.loginTitle}></div>

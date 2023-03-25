@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./login.module.css";
 import Navbar from "../../Navbar/NavbarT2";
-import { RecruiterLogin, UserLoginForm } from "../REGISTER/Forms";
+import { UserLoginForm } from "../REGISTER/Forms";
 
 function Login() {
   return (
@@ -51,7 +51,7 @@ function LoginPage() {
               </div>
             </div>
           </div>
-          <RecruiterLogin />
+          <UserLoginForm />
         </div>
         <div className={styles.center2}></div>
       </div>
