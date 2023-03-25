@@ -1,7 +1,7 @@
 import { useState } from "react";
-import httpClient from "../../../httpClient";
 import styles from "./login.module.css";
 import Navbar from "../../Navbar/NavbarT2";
+import { RecruiterLogin, UserLoginForm } from "../REGISTER/Forms";
 
 function Login() {
   return (
@@ -12,65 +12,46 @@ function Login() {
 }
 
 function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPass] = useState("");
+  const [userType, setUserType] = useState("candidate");
 
-  const loginuser = async () => {
-    console.log(email, password);
-
-    try {
-      const resp = await httpClient.post("//localhost:5000/login", { email, password });
-      console.log(resp)
-      window.location.href = "/user";
-    } catch (error) {
-      if (error.response.status === 401) {
-        alert("Invalid credintials");
-      }
-    }
+  const handleCheck = (e) => {
+    setUserType(e.target.value);
   };
   return (
     <div>
       <Navbar />
       <div className={styles.center}>
         <div className={styles.center1}>
-          <form>
+          <div className={styles.cardHeader}>
             <div className={styles.title}>
               <h1>Login</h1>
             </div>
-            <div className={styles.inputField}>
-              <input
-                type="text"
-                placeholder="Email"
-                required
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
+            <div className={styles.radioContainer}>
+              <div className={styles.radioBtnContainer}>
+                <input
+                  type="radio"
+                  name="candidate"
+                  value="candidate"
+                  id="candidate"
+                  checked={userType === "candidate"}
+                  onChange={handleCheck}
+                />
+                <label htmlFor="candidate">candidate</label>
+              </div>
+              <div className={styles.radioBtnContainer}>
+                <input
+                  type="radio"
+                  name="recruiter"
+                  value="recruiter"
+                  id="recruiter"
+                  checked={userType === "recruiter"}
+                  onChange={handleCheck}
+                />
+                <label htmlFor="recruiter">recruiter</label>
+              </div>
             </div>
-            <div className={styles.inputField}>
-              <input
-                type="password"
-                placeholder="Password"
-                required
-                onChange={(e) => {
-                  setPass(e.target.value);
-                }}
-              />
-            </div>
-            <div className={styles.fp}>
-              <a href=" ">forget password?</a>
-            </div>
-            <div className={styles.inputField}>
-              <button type="button" onClick={() => loginuser()}>
-                Login
-              </button>
-            </div>
-            <div className={styles.signupLink}>
-              <p>
-                Don't have an account?<a href="/register"> Signup</a>
-              </p>
-            </div>
-          </form>
+          </div>
+          <RecruiterLogin />
         </div>
         <div className={styles.center2}></div>
       </div>

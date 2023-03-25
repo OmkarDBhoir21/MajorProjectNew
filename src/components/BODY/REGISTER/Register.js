@@ -1,7 +1,7 @@
 import { useState } from "react";
-import httpClient from "../../../httpClient";
 import styles from "./register.module.css";
 import Navbar from "../../Navbar/NavbarT2";
+import { UserRegisterForm } from "./Forms";
 
 function Signup() {
   return (
@@ -13,33 +13,7 @@ function Signup() {
 }
 
 function SignupPage() {
-  const [fname, setFirstName] = useState();
-  const [lname, setLastName] = useState();
-  const [email, setEmail] = useState();
-  const [mobNo, setPhoneNum] = useState();
-  const [password, setPass] = useState();
   const [userType, setUserType] = useState("candidate");
-
-  const signUpUser = async () => {
-    console.log(fname, lname, email, mobNo, password);
-    try {
-      await httpClient.post("//localhost:5000/register", {
-        fname,
-        lname,
-        email,
-        mobNo,
-        password,
-      });
-      window.location.href = "/";
-    } catch (error) {
-      if (error.response.status === 401) {
-        alert("Invalid credintials");
-      }
-      if (error.response.status === 409) {
-        alert("User already exist!");
-      }
-    }
-  };
 
   const handleCheck = (e) => {
     setUserType(e.target.value);
@@ -77,14 +51,7 @@ function SignupPage() {
               </div>
             </div>
           </div>
-          <UserForm
-            setFirstName={setFirstName}
-            setLastName={setLastName}
-            setEmail={setEmail}
-            setPhoneNum={setPhoneNum}
-            setPass={setPass}
-            signUpUser={signUpUser}
-          />
+          <UserRegisterForm />
         </div>
         <div className={styles.center2}>
           <div className={styles.loginTitle}></div>
@@ -93,84 +60,5 @@ function SignupPage() {
     </div>
   );
 }
-
-function UserForm(
-  setFirstName,
-  setLastName,
-  setEmail,
-  setPhoneNum,
-  setPass,
-  signUpUser
-) {
-  return (
-    <div>
-      <div>
-        <form>
-          <div className={styles.inputField}>
-            <input
-              type="text"
-              placeholder="First name"
-              required
-              onChange={(e) => {
-                setFirstName(e.target.value);
-              }}
-            />
-          </div>
-          <div className={styles.inputField}>
-            <input
-              type="text"
-              placeholder="Last name"
-              required
-              onChange={(e) => {
-                setLastName(e.target.value);
-              }}
-            />
-          </div>
-          <div className={styles.inputField}>
-            <input
-              type="text"
-              placeholder="Email"
-              required
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          </div>
-          <div className={styles.inputField}>
-            <input
-              type="number"
-              placeholder="Enter mobile no."
-              required
-              onChange={(e) => {
-                setPhoneNum(e.target.value);
-              }}
-            />
-          </div>
-          <div className={styles.inputField}>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              required
-              onChange={(e) => {
-                setPass(e.target.value);
-              }}
-            />
-          </div>
-          <div className={styles.inputField}>
-            <button type="button" onClick={() => signUpUser()}>
-              Signup
-            </button>
-          </div>
-          <div className={styles.loginLink}>
-            <label>Already have an account?</label>
-            <a href="/login"> Login</a>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-}
-
-
 
 export default Signup;
