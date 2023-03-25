@@ -1,27 +1,12 @@
 import { useState } from "react";
 import httpClient from "../../../httpClient";
 import styles from "./login.module.css";
+import Navbar from "../../Navbar/NavbarT2";
 
 function Login() {
   return (
     <div>
       <LoginPage />
-    </div>
-  );
-}
-
-function Navbar() {
-  const handleClick = () => {
-    window.location.href = "/register";
-  };
-  return (
-    <div className={styles.navbar}>
-      <div className={styles.navtitle}>
-        <h3>Resume Analyser</h3>
-      </div>
-      {/* <div className={styles.navbuttons}>
-              <button style={{marginLeft:"50%"}} onClick={() => handleClick()}>SignUp</button>
-          </div> */}
     </div>
   );
 }
@@ -49,7 +34,7 @@ function LoginPage() {
       <div className={styles.center}>
         <div className={styles.center1}>
           <form>
-            <div className={styles.loginTitle}>
+            <div className={styles.title}>
               <h1>Login</h1>
             </div>
             <div className={styles.inputField}>
