@@ -1,11 +1,43 @@
 import { useState } from "react";
+import { acceptIcon, rejectIcon } from "../../../../../utils/Icons";
 import styles from "./AppliedCandidate.module.css";
 
 export default function AppliedCandidate() {
-  const [candidates, setCandidates] = useState(["Omkar", "Bhoir"]);
+  const [candidates, setCandidates] = useState(["Omkar", "Bhoir", "Omkar"]);
   return (
     <div className={styles.main}>
-      <div className={styles.operational}></div>
+      <div className={styles.operational}>
+        <CandidateDetailsCard
+          candidateName="Omkar"
+          candidateSkill="Python"
+          Resume="Resume.pdf"
+        />
+        <CandidateDetailsCard
+          candidateName="Omkar"
+          candidateSkill="Python"
+          Resume="Resume.pdf"
+        />
+        <CandidateDetailsCard
+          candidateName="Omkar"
+          candidateSkill="Python"
+          Resume="Resume.pdf"
+        />
+        <CandidateDetailsCard
+          candidateName="Omkar"
+          candidateSkill="Python"
+          Resume="Resume.pdf"
+        />
+        <CandidateDetailsCard
+          candidateName="Omkar"
+          candidateSkill="Python"
+          Resume="Resume.pdf"
+        />
+        <CandidateDetailsCard
+          candidateName="Omkar"
+          candidateSkill="Python"
+          Resume="Resume.pdf"
+        />
+      </div>
       <div className={styles.seperatorBody}>
         <div className={styles.seperator}></div>
       </div>
@@ -22,13 +54,23 @@ export default function AppliedCandidate() {
 }
 
 const RankerItem = () => {
+  const handleClick = () => {
+    console.log("Done");
+  };
   return (
     <div>
       <li className={styles.rankingListItem}>
-        <p>Omkar Bhoir</p>
+        <p>&emsp;Omkar Bhoir</p>
         <div className={styles.btnContainer}>
-          <button>V</button>
-          <button>X</button>
+          <button onClick={handleClick} style={{ background: "#ff1744" }}>
+            {acceptIcon}
+          </button>
+          <button
+            onClick={handleClick}
+            style={{ background: "cornflowerblue" }}
+          >
+            {rejectIcon}
+          </button>
         </div>
       </li>
     </div>
@@ -37,8 +79,26 @@ const RankerItem = () => {
 
 const RankList = ({ candidates }) => {
   return (
-    <div>
-      <ul>{candidates && candidates.map((f) => <RankerItem />)}</ul>
+    <div className={styles.RankList}>
+      <ol>{candidates && candidates.map((f) => <RankerItem />)}</ol>
+    </div>
+  );
+};
+
+const CandidateDetailsCard = ({ candidateName, candidateSkill, Resume }) => {
+  return (
+    <div className={styles.candidateDetailsCard}>
+      <div className={styles.details}>
+        <p>
+          Name:<p>{candidateName}</p>
+        </p>
+        <p>
+          Skills<p>{candidateSkill}</p>
+        </p>
+        <p>
+          Resume:&nbsp;<p>{Resume}</p>
+        </p>
+      </div>
     </div>
   );
 };
